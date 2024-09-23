@@ -1,6 +1,7 @@
 <template>
     <div class="users-page">
         <UsersList 
+            class="users-list"
             :users-list="usersList"
             :selected-user-id="selectedUser?.id" 
             @click-user="onClickUser" 
@@ -15,7 +16,8 @@
     <Teleport to="#modals">
         <Modal modal-name="addUser">
             <UserForm  
-                @submit="onSubmitAddUser">
+                @submit="onSubmitAddUser"
+                @cancel="onCancel">
                 <template #header>
                     Add User
                 </template>
@@ -26,7 +28,8 @@
             <UserForm
                 :first-name="selectedUser?.firstName"
                 :last-name="selectedUser?.lastName"  
-                @submit="onSubmitEditUser">
+                @submit="onSubmitEditUser"
+                @cancel="onCancel">
                 <template #header>
                     Edit User
                 </template>
@@ -76,10 +79,20 @@ const onSubmitEditUser = (form: {firstName: string, lastName: string}) => {
     updateUser(form);
     setActiveModal(null);
 }
+
+const onCancel = () => {
+    setActiveModal(null);
+}
 </script>
 
 <style scoped>
 .users-page {
     display: flex;
+    gap: 2rem;
+    height: 100%;
+}
+
+.users-list {
+    max-width: 30.8rem;
 }
 </style>

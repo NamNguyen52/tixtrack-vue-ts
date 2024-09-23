@@ -20,14 +20,18 @@
 }
 
 .nav {
+    display: flex;
+    align-items: center;
     height: 5.6rem;
-    background: green;
+    background: var(--nav-background);
+    padding: 1.0rem 6.4rem;
 }
 
 .main {
-    height: 100%;
-    background: red;
+    height: calc(100vh - 5.6rem);
+    background-color: var(--main-content-background);
     padding: 6.4rem;
+    overflow: hidden;
 }
 
 @media (max-width: 375px) {

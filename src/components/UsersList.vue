@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <ul>
-            <li 
+    <div class="container">
+        <ul class="list">
+            <li class="list-item"
                 v-for="user in usersList" 
                 :key="user.id" 
                 @click="$emit('click-user', user.id)"
@@ -13,7 +13,7 @@
         <button 
             type="button" 
             @click="$emit('click-add-user')">
-            Add User
+            + Add User
         </button>
     </div>
 </template>
@@ -40,7 +40,34 @@ defineEmits<Emits>();
 </script>
 
 <style scoped>
-.selected-user {
-    background: black;
+.container {
+    border: 1px solid var(--border-color);
+    width: 100%;
+    padding: 1.6rem;
+    border-radius: var(--border-radius);
+    background: var(--container-background);
 }
+
+.selected-user {
+    background: var(--active-list-item);
+}
+
+.list {
+    height: calc(100% - 5rem);
+    overflow: auto;
+}
+
+.list-item {
+    padding: 1.0rem;
+    border-radius: var(--border-radius);
+}
+
+.list-item:hover {
+    cursor: pointer;
+}
+
+.list-item:not(.selected-user):hover {
+    background-color: rgba(196, 193, 193, 0.336);
+}
+
 </style>

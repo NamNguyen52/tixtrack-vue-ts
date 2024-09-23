@@ -33,7 +33,7 @@ const onClickModalBackground = () => {
     bottom: 0;
     left: 0;
     right: 0;
-    background: blue;
+    background: black;
     opacity: 0.5;
 }
 </style>
