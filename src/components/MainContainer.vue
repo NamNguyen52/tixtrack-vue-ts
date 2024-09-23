@@ -35,6 +35,10 @@
 }
 
 @media (max-width: 375px) {
+    .nav {
+        padding: 1.0rem 1.6rem;
+    }
+
     .main {
         padding: 2.4rem 1.6rem;
     }

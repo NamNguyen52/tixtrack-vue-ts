@@ -2,7 +2,7 @@
     <div class="container">
         <div class="header">
             <h2>
-                <slot name="header"></slot>
+                <slot></slot>
             </h2>
             <button type="button" @click="$emit('cancel')">
                 X

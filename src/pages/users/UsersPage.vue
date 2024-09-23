@@ -25,9 +25,7 @@
             <UserForm  
                 @submit="onSubmitAddUser"
                 @cancel="onCancel">
-                <template #header>
                     Add User
-                </template>
             </UserForm>
         </Modal>
 
@@ -37,9 +35,7 @@
                 :last-name="selectedUser?.lastName"  
                 @submit="onSubmitEditUser"
                 @cancel="onCancel">
-                <template #header>
                     Edit User
-                </template>
             </UserForm>
         </Modal>
 
@@ -57,13 +53,13 @@
 <script lang="ts" setup>
 import useUsersPageCommands from "./state/users-page.commands";
 import { onMounted } from "vue";
-import UsersList from "../../components/UsersList.vue";
+import UsersList from "./list/UsersList.vue";
 import useUsersPageObservers from "./state/users-page.observers";
 import useUsersPageStore from "./state/users-page.store";
-import UserDetails from "../../components/UserDetails.vue";
+import UserDetails from "./details/UserDetails.vue";
 import Modal from "../../components/modal/Modal.vue";
 import useModalStore from "../../components/modal/state/modal.store";
-import UserForm from "../../components/UserForm.vue";
+import UserForm from "./form/UserForm.vue";
 
 const { fetchUsers, addNewUser, updateUser }  = useUsersPageCommands();
 const { usersList, selectedUser } = useUsersPageObservers();

@@ -14,11 +14,11 @@
   --border-color: rgba(241, 241, 241, 1); 
 
   --nav-background: #CCE5E2;
-
   --main-content-background: rgba(250, 250, 250, 1);
-
   --container-background: white;
-  --active-list-item: #EAEAEA;
+  
+  --list-item-active: #EAEAEA;
+  --list-item-hover: rgba(196, 193, 193, 0.336);
 
   --button-color: rgba(242, 242, 242, 1);
   --button-color-hover: rgb(200, 197, 197);

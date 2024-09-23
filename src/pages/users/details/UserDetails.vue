@@ -16,7 +16,7 @@
                 </tr>
                 <tr>
                     <th>Date Added</th>
-                    <td>{{ user?.createdAt }}</td>
+                    <td>{{ formattedDateAdded }}</td>
                 </tr>
                 <tr>
                     <th>ID</th>
@@ -29,6 +29,7 @@
 
 <script lang="ts" setup>
 import { computed } from "vue";
+import { format } from "date-fns";
 
 type User = {
     firstName: string,
@@ -45,23 +46,26 @@ interface Emits {
     (e: 'click-edit-user'): void
 }
 
-defineProps<Props>();
-
 defineEmits<Emits>();
 
-// const formattedDateAdded = computed(() => )
+const props = defineProps<Props>();
+
+const formattedDateAdded = computed(() => {
+    return props.user?.createdAt ? 
+        format(new Date(props.user.createdAt), "LLLL d, y h:mm aa") : null;
+});
 </script>
 
 <style scoped>
 .container {
-    width: 100%;
-    border: 1px solid var(--border-color);
-    padding: 2.0rem;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    padding: 2.0rem;
     gap: 1.2rem;
-    border-radius: var(--border-radius);
     background: var(--container-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
 }
 
 .header {

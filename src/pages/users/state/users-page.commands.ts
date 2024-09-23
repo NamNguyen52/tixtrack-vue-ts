@@ -8,7 +8,9 @@ export default function useUsersPageCommands() {
         setStatus, 
         selectedUserId, 
         addUser, 
-        updateUserList 
+        updateUserList,
+        users,
+        setSelectedUserId, 
     } = useUsersPageStore();
 
     const fetchUsers = async () => {
@@ -17,7 +19,8 @@ export default function useUsersPageCommands() {
         try {
             const response = await getUsers();
             setUsers(response);
-        } catch {
+            selectFirstUser();
+        } catch(error) {
             setStatus("error");
         } finally {
             setStatus("idle");
@@ -28,7 +31,7 @@ export default function useUsersPageCommands() {
         try {
             const newUser = await postUser(payload);
             addUser(newUser);
-        } catch {
+        } catch(error) {
             setStatus("error");
         }
     }
@@ -42,9 +45,16 @@ export default function useUsersPageCommands() {
         }
     }
 
+    const selectFirstUser = () => {
+        if (users.value.length) {
+            setSelectedUserId(users.value[0].id);
+        }
+    }
+
     return {
         fetchUsers,
         addNewUser,
-        updateUser
+        updateUser,
+        selectFirstUser
     }
 }

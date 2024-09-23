@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <p v-if="!usersList.length">No Users Yet</p>
+        <h2 v-if="!usersList.length">No Users Yet</h2>
 
         <ul class="list" v-else>
             <li class="list-item"
@@ -51,7 +51,7 @@ defineEmits<Emits>();
 }
 
 .selected-user {
-    background: var(--active-list-item);
+    background: var(--list-item-active);
 }
 
 .list {
@@ -69,6 +69,6 @@ defineEmits<Emits>();
 }
 
 .list-item:not(.selected-user):hover {
-    background-color: rgba(196, 193, 193, 0.336);
+    background-color: var(--list-item-hover);
 }
 </style>
