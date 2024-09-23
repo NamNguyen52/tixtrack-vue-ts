@@ -1,6 +1,8 @@
 <template>
     <div class="container">
-        <ul class="list">
+        <p v-if="!usersList.length">No Users Yet</p>
+
+        <ul class="list" v-else>
             <li class="list-item"
                 v-for="user in usersList" 
                 :key="user.id" 
