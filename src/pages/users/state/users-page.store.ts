@@ -21,12 +21,28 @@ export default function useUsersPageStore() {
         selectedUserId.value = userId;
     }
 
+    const addUser = (user: User) => {
+        users.value.push(user);
+    }
+
+    const updateUserList = (updatedUser: User) => {
+        users.value = users.value.map((user) => {
+            if (user.id === updatedUser.id) {
+                return updatedUser;
+            }
+            
+            return user
+        });
+    }
+
     return {
         users,
         status,
         selectedUserId,
         setUsers,
         setStatus,
-        setSelectedUserId
+        setSelectedUserId,
+        addUser,
+        updateUserList,
     }
 }

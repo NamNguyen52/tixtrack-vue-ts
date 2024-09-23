@@ -2,7 +2,7 @@
     <div>
         <div class="header">
             <h2>{{ user?.firstName }} {{ user?.lastName }}</h2>
-            <button type="button">Edit User</button>
+            <button type="button" @click="$emit('click-edit-user')">Edit User</button>
         </div>
         <table class="table">
             <tbody>
@@ -39,7 +39,12 @@ interface Props {
     user?: User
 }
 
+interface Emits {
+    (e: 'click-edit-user'): void
+}
+
 defineProps<Props>();
+defineEmits<Emits>();
 </script>
 
 <style>

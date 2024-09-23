@@ -1,9 +1,18 @@
 <template>
     <div>
         <ul>
-            <li v-for="user in usersList" :key="user.id" @click="$emit('click-user', user.id)">{{ user.name }}</li>
+            <li 
+                v-for="user in usersList" 
+                :key="user.id" 
+                @click="$emit('click-user', user.id)"
+                :class="[{'selected-user': user.id === selectedUserId }]">
+                {{ user.name }}
+            </li>
         </ul>
-        <button type="button" @click="$emit('click-add-user')">
+
+        <button 
+            type="button" 
+            @click="$emit('click-add-user')">
             Add User
         </button>
     </div>
@@ -17,7 +26,8 @@ type UserListItem = {
 }
 
 interface Props {
-    usersList: UserListItem[]
+    usersList: UserListItem[];
+    selectedUserId?: string;
 }
 
 interface Emits {
@@ -30,5 +40,7 @@ defineEmits<Emits>();
 </script>
 
 <style scoped>
-
+.selected-user {
+    background: black;
+}
 </style>
