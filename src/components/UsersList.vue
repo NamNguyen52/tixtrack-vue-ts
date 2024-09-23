@@ -6,7 +6,7 @@
                 :key="user.id" 
                 @click="$emit('click-user', user.id)"
                 :class="[{'selected-user': user.id === selectedUserId }]">
-                {{ user.name }}
+                {{ user.name }} &#8250;
             </li>
         </ul>
 
@@ -69,5 +69,4 @@ defineEmits<Emits>();
 .list-item:not(.selected-user):hover {
     background-color: rgba(196, 193, 193, 0.336);
 }
-
 </style>

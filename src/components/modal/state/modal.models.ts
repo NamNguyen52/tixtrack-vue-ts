@@ -1,1 +1,1 @@
-export type ModalNames = null | "editUser" | "addUser";
+export type ModalNames = null | "editUser" | "addUser" | "mobileUsersList";

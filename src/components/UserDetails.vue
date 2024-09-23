@@ -2,7 +2,7 @@
     <div class="container">
         <div class="header">
             <h2>{{ user?.firstName }} {{ user?.lastName }}</h2>
-            <button type="button" @click="$emit('click-edit-user')">Edit User</button>
+            <button type="button" @click="$emit('click-edit-user')">&#9998; Edit User</button>
         </div>
         <table class="table">
             <tbody>

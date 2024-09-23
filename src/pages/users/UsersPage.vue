@@ -1,4 +1,11 @@
 <template>
+    <button 
+        type="button" 
+        class="mobile-users-list-toggle"
+        @click="onClickMobileUsersListToggle">
+        &#9776;
+    </button>
+    
     <div class="users-page">
         <UsersList 
             class="users-list"
@@ -35,6 +42,15 @@
                 </template>
             </UserForm>
         </Modal>
+
+        <Modal modal-name="mobileUsersList">
+            <UsersList 
+                class="mobile-users-list"
+                :users-list="usersList"
+                :selected-user-id="selectedUser?.id" 
+                @click-user="onClickUser" 
+                @click-add-user="onClickAddUser" />
+        </Modal>
     </Teleport>
 </template>
 
@@ -60,6 +76,7 @@ onMounted(() => {
 
 const onClickUser = (userId: string) => {
     setSelectedUserId(userId);
+    setActiveModal(null);
 }
 
 const onClickAddUser = () => {
@@ -83,6 +100,10 @@ const onSubmitEditUser = (form: {firstName: string, lastName: string}) => {
 const onCancel = () => {
     setActiveModal(null);
 }
+
+const onClickMobileUsersListToggle = () => {
+    setActiveModal("mobileUsersList");
+}
 </script>
 
 <style scoped>
@@ -94,5 +115,25 @@ const onCancel = () => {
 
 .users-list {
     max-width: 30.8rem;
+}
+
+.mobile-users-list-toggle {
+    display: none;
+    margin-bottom: 1.0rem;
+}
+
+.mobile-users-list {
+    width: calc(100vw - 2.0rem);
+    height: 90vh;
+}
+
+@media (max-width: 375px) {
+    .users-list {
+        display: none;
+    }
+
+    .mobile-users-list-toggle {
+        display: block;
+    }
 }
 </style>
